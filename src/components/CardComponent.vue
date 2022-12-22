@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cardDiv">
         <h1> Card Component </h1>
         
     </div>
@@ -16,5 +16,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>
