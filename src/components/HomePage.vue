@@ -3,7 +3,7 @@
      <h1> Hello,<span class="text-danger">{{  title  }}</span> !</h1>
       <!-- <ChildPage :changeTitle="updateTitle"  /> -->
     
-     <ChildPage v-on:changeTitle="updateTitle"/>
+     <ChildPage v-on:changeTitle="updateTitle" v-on:user = user></ChildPage>
      
   </div>
 </template>
