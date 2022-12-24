@@ -1,6 +1,5 @@
 <template>
     <div id="mainDiv">
-
         <div class="heading-and-addCard">
             <div class="video-and-heading">
                 <h1>Virtual cards </h1>
@@ -29,28 +28,28 @@
 
         <div class="search-and-filter">
             <div class="search-field">
-                <!-- <input type="text" placeholder="search">
-                <i class="fa-solid fa-magnifying-glass"></i> -->
-                <SearchComponent v-on:changeTitle="nameSearch($event)" :cards="card" />
+                <input v-model="searchText" type="text" placeholder="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <DialogBox />
 
 
-            <!-- <div class="filter">
+            <div class="filter">
                 <button class="btn btn-sm"> <i class="fa-solid fa-filter"></i><span> filter</span></button>
-            </div> -->
+            </div>
 
         </div>
 
 
-        <CardComponent :cards="card" />
+
+        <CardComponent :cards="card" :filteredItems="filteredItems" />
 
     </div>
 </template>
 
 <script>
 import userData from '../data/card.json';
-import SearchComponent from './SearchComponent.vue'
+// import PaginationComponent from './Pagination.vue';
 import CardComponent from './CardComponent.vue'
 // import FilterData from './FilterData.vue'
 import DialogBox from './DialogBox'
@@ -61,21 +60,26 @@ export default {
         CardComponent,
         // FilterData,
         DialogBox,
-        SearchComponent
+        // PaginationComponent, 
     },
 
     data() {
         return {
             card: userData,
             showDialog: false,
-            searchObj :  null , 
+            searchObj: null,
+            searchText: ''
         }
     },
-    methods: {
-        nameSearch(obj) {
-            console.log("Clicked on Obj : ", obj)
-            this.searchObj = obj;
+
+    computed: {
+        filteredItems() {
+            return this.card.data.filter(item => item.name.includes(this.searchText));
         },
+    },
+
+    methods: {
+
     }
 }
 </script>
