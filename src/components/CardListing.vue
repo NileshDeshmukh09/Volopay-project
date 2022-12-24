@@ -31,18 +31,51 @@
                 <input v-model="searchText" type="text" placeholder="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <DialogBox />
+            
 
+            <!--  Dialog Box -->
+            <div>
+                <b-dropdown id="dropdown-right" class="filterDropdown m-2" right text="Filter" variant="primary">
+                    <p> Filters </p>
+                    <hr>
+                    <!-- <pre> {{ filteredItems }}</pre> -->
 
-            <div class="filter">
-                <button class="btn btn-sm"> <i class="fa-solid fa-filter"></i><span> filter</span></button>
+                    <form action="" @submit.prevent="filteredItems">
+                        <div class="filter-dropdown">
+
+                        
+                            <p for="card-type" class="d-block text-secondary">Type</p>
+                            <div class="cardtype-checkbox">
+                                <div class="subscription">
+                                    <input type="checkbox" id="subscription" v-model="selectCardType" value="subscription"> 
+                                    <label for="subscription">Subscription</label>
+                                </div>
+                                <div class="burner">
+                                    <input type="checkbox" id="burner" v-model="selectCardType" value="burner"> 
+                                    <label for="burner">Burner</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- <button>Apply Filter</button> -->
+                    </form>
+
+                
+
+                </b-dropdown>
             </div>
+            <!--  Dialog Box -->
+
+
+            <!-- <div class="filter">
+                <button class="btn btn-sm"> <i class="fa-solid fa-filter"></i><span> filter</span></button>
+            </div> -->
 
         </div>
 
 
 
-        <CardComponent :cards="card" :filteredItems="filteredItems" />
+        <CardComponent :cards="card" :filteredItems="filteredItems" :applyFilter="applyFilter" />
 
     </div>
 </template>
@@ -51,15 +84,14 @@
 import userData from '../data/card.json';
 // import PaginationComponent from './Pagination.vue';
 import CardComponent from './CardComponent.vue'
-// import FilterData from './FilterData.vue'
-import DialogBox from './DialogBox'
+// import DialogBox from './DialogBox'
 
 export default {
     name: "CardListing",
     components: {
         CardComponent,
         // FilterData,
-        DialogBox,
+        // DialogBox,
         // PaginationComponent, 
     },
 
@@ -68,18 +100,39 @@ export default {
             card: userData,
             showDialog: false,
             searchObj: null,
-            searchText: ''
+            searchText: '',
+            selectCardType: [],
         }
     },
 
     computed: {
+        // filteredItems() {
+        //     return this.card.data.filter(item => item.name.includes(this.searchText));
+        // },
+
         filteredItems() {
-            return this.card.data.filter(item => item.name.includes(this.searchText));
+            if(this.searchText != ''){
+                return this.card.data.filter(item => item.name.includes(this.searchText));
+            }
+
+             // Filter the objects array based on the selected object type 
+             let filteredObjects = this.card.data.filter(card => {
+                if (this.selectCardType.length > 0 && !this.selectCardType.includes(card.card_type)) {
+                    return false;
+                }
+
+                return true;
+            });
+            return filteredObjects;
         },
+        
     },
 
     methods: {
+        // applyFilter() {
+           
 
+        // },
     }
 }
 </script>
@@ -139,7 +192,7 @@ export default {
 
 #card-types li a {
     text-decoration: none;
-    color: rgb(164, 152, 155);
+    color: rgb(72, 72, 72);
     font-weight: 600;
     border-radius: 0px;
 }
@@ -178,5 +231,18 @@ export default {
 
 .filter {
     box-shadow: 0px 0px 5px;
+}
+
+/* Filter on Card-Type */
+
+
+.cardtype-checkbox {
+    display: flex;
+    justify-content:space-between;
+}
+
+.filter-dropdown {
+    width: 350px;
+    padding: 30px;
 }
 </style>
