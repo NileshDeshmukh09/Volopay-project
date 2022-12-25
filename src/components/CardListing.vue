@@ -58,19 +58,13 @@
 
                             </div>
                         </div>
-                        <!-- <button>Apply Filter</button> -->
+                        <button class="btn text-center btn-secondary" @click="onCancel()">Cancel</button>
                     </form>
 
 
 
                 </b-dropdown>
             </div>
-            <!--  Dialog Box -->
-
-
-            <!-- <div class="filter">
-                <button class="btn btn-sm"> <i class="fa-solid fa-filter"></i><span> filter</span></button>
-            </div> -->
 
         </div>
 
@@ -98,17 +92,13 @@
 
 <script>
 import userData from '../data/card.json';
-// import PaginationComponent from './Pagination.vue';
 import CardComponent from './CardComponent.vue'
-// import DialogBox from './DialogBox'
 
 export default {
     name: "CardListing",
     components: {
         CardComponent,
-        // FilterData,
-        // DialogBox,
-        // PaginationComponent, 
+        
     },
 
     data() {
@@ -191,6 +181,10 @@ export default {
             if (this.currentPage < this.totalPages) {
                 this.currentPage++;
             }
+        },
+
+        onCancel(){
+            return this.selectCardType = [];
         }
     }
 }
@@ -199,7 +193,6 @@ export default {
 <style scoped>
 #mainDiv {
     margin: 30px;
-    background: rgb(245, 204, 204);
 }
 
 /* heading and add card div styles */
@@ -324,5 +317,11 @@ export default {
 
 .page-number li {
     margin : 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .heading-and-addCard {
+        margin: 0px;
+    }
 }
 </style>

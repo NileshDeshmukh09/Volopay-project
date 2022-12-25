@@ -1,6 +1,6 @@
 <template>
     <div class="cardDiv">
-
+          
         <div class="all-cards" v-if="filteredItems.length > 0">
 
             <!-- Card Components - show all the list of the card  -->
@@ -10,8 +10,11 @@
                         <h3>{{ card.name }}</h3>
                         <p>{{ card.name }} <i class="fa-solid fa-circle"></i> {{ card.budget_name }}</p>
                     </div>
-                    <div class="icon">
+                    <div class="icon" v-if="card.card_type == 'burner'">
                         <i class="fa-solid fa-fire-flame-curved fire-icon"></i>
+                    </div>
+                    <div class="icon" v-if="card.card_type == 'subscription'">
+                        <i class="fa-solid fa-spinner"></i>     
                     </div>
 
                 </div>
@@ -21,6 +24,7 @@
                     <p><span>Expires :</span> {{ card.expiry }}</p>
                 </div>
 
+                <!-- progress - bar  -->
                 <div class="progress-bar">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
@@ -83,7 +87,7 @@ export default {
 
 .all-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
 
     justify-content: space-evenly;
 
@@ -161,5 +165,25 @@ export default {
     height: 12px;
     border-radius: 50%;
     margin: 7px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .all-cards {
+        display: grid;
+    grid-template-columns: 1fr;
+
+    /* justify-content: space-evenly; */
+
+    
+}
+}
+
+.all-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    justify-content: space-evenly;
+
 }
 </style>
