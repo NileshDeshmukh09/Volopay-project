@@ -31,7 +31,7 @@
                 <input v-model="searchText" type="text" placeholder="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            
+
 
             <!--  Dialog Box -->
             <div>
@@ -43,15 +43,16 @@
                     <form action="" @submit.prevent="filteredItems">
                         <div class="filter-dropdown">
 
-                        
+
                             <p for="card-type" class="d-block text-secondary">Type</p>
                             <div class="cardtype-checkbox">
                                 <div class="subscription">
-                                    <input type="checkbox" id="subscription" v-model="selectCardType" value="subscription"> 
+                                    <input type="checkbox" id="subscription" v-model="selectCardType"
+                                        value="subscription">
                                     <label for="subscription">Subscription</label>
                                 </div>
                                 <div class="burner">
-                                    <input type="checkbox" id="burner" v-model="selectCardType" value="burner"> 
+                                    <input type="checkbox" id="burner" v-model="selectCardType" value="burner">
                                     <label for="burner">Burner</label>
                                 </div>
 
@@ -60,7 +61,7 @@
                         <!-- <button>Apply Filter</button> -->
                     </form>
 
-                
+
 
                 </b-dropdown>
             </div>
@@ -73,9 +74,24 @@
 
         </div>
 
+        <!-- <pre>{{  paginatedItems }}</pre>  -->
 
+        <CardComponent :cards="card" :paginatedItems="paginatedItems" :filteredItems="filteredItems"/>
 
-        <CardComponent :cards="card" :filteredItems="filteredItems" :applyFilter="applyFilter" />
+        <!--  Pagination -->
+
+        <div class="pagination">
+
+            <button class="btn btn-danger" v-if="currentPage > 1" @click="prevPage">Prev</button>
+            <ul class="page-number">
+                <li v-for="page in pages" :key="page" :class="{ active: page === currentPage }" @click="goToPage(page)">
+                    {{ page }}</li>
+            </ul>
+            <button v-if="currentPage < totalPages" class="btn btn-danger" @click="nextPage">Next</button>
+
+        </div>
+
+        <!--  Pagination -->
 
     </div>
 </template>
@@ -102,21 +118,55 @@ export default {
             searchObj: null,
             searchText: '',
             selectCardType: [],
+            currentPage: userData.page,
+            itemsPerPage: userData.per_page,
+            total: userData.total,
+            items: userData.data
         }
     },
 
     computed: {
-        // filteredItems() {
-        //     return this.card.data.filter(item => item.name.includes(this.searchText));
-        // },
+
+       
+
+        // pagination
+
+        totalPages() {
+            return Math.ceil(this.items.length / this.itemsPerPage);
+        },
+
+        pages() {
+            const pages = [];
+            for (let i = 1; i <= this.totalPages; i++) {
+                pages.push(i);
+            }
+            return pages;
+        },
+
+        startIndex() {
+            return (this.currentPage - 1) * this.itemsPerPage;
+        },
+        endIndex() {
+            return Math.min(this.startIndex + this.itemsPerPage - 1, this.items.length - 1);
+        },
+
+        paginatedItems() {
+            return this.items.slice(this.startIndex, this.endIndex + 1);
+        },
 
         filteredItems() {
-            if(this.searchText != ''){
-                return this.card.data.filter(item => item.name.includes(this.searchText));
+            if (this.searchText != '') {
+                
+                // return this.card.data.filter(item => item.name.includes(this.searchText));
+                return this.items
+                                .slice(this.startIndex, this.endIndex + 1)
+                                .filter(item => item.name.includes(this.searchText));
             }
 
-             // Filter the objects array based on the selected object type 
-             let filteredObjects = this.card.data.filter(card => {
+            // Filter the objects array based on the selected object type 
+            let filteredObjects = this.items
+                                        .slice(this.startIndex, this.endIndex + 1)
+                                        .filter(card => {
                 if (this.selectCardType.length > 0 && !this.selectCardType.includes(card.card_type)) {
                     return false;
                 }
@@ -125,14 +175,23 @@ export default {
             });
             return filteredObjects;
         },
-        
+
     },
 
     methods: {
-        // applyFilter() {
-           
-
-        // },
+        goToPage(page) {
+            this.currentPage = page;
+        },
+        prevPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+            }
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+            }
+        }
     }
 }
 </script>
@@ -234,15 +293,36 @@ export default {
 }
 
 /* Filter on Card-Type */
-
-
 .cardtype-checkbox {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .filter-dropdown {
     width: 350px;
     padding: 30px;
+}
+
+
+/* Pagination */
+.active {
+  color: red;
+  font-weight: bold;
+}
+
+.pagination {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.page-number {
+    display: flex;
+    
+}
+
+.page-number li {
+    margin : 20px;
 }
 </style>

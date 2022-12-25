@@ -1,10 +1,9 @@
 <template>
     <div class="cardDiv">
 
-
-
-        <!-- <pre>{{  filteredItems.length }}</pre> -->
         <div class="all-cards" v-if="filteredItems.length > 0">
+
+            <!-- Card Components - show all the list of the card  -->
             <div v-for="card in filteredItems" :key="card.name" class="card-list">
                 <div class="name-and-icon">
                     <div class="name-and-para">
@@ -50,54 +49,6 @@
 
             </div>
         </div>
-
-        <!-- <div class="all-cards" v-else>
-            <div v-for="card in filteredItems" :key="card.name" class="card-list">
-                <div class="name-and-icon">
-                    <div class="name-and-para">
-                        <h3>{{ card.name }}</h3>
-                        <p>{{ card.name }} <i class="fa-solid fa-circle"></i> {{ card.budget_name }}</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa-solid fa-fire-flame-curved fire-icon"></i>
-                    </div>
-
-                </div>
-
-                <div class="cardType-expiry">
-                    <h1 class="btn type-button"> {{ card.card_type }} </h1>
-                    <p><span>Expires :</span> {{ card.expiry }}</p>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100">100%</div>
-                    </div>
-                </div>
-
-                <div class="spent-and-available">
-                    <div class="spent">
-                        <div class="spent-color-and-name">
-                            <div class="spent-color">
-                            </div>
-                            <p>Spent</p>
-                        </div>
-                        <p> {{ card.spent.value }} {{ card.spent.currency }}</p>
-                    </div>
-                    <div class="available">
-                        <div class="available-color-and-name">
-                            <div class="available-color bg-success">
-                            </div>
-                            <p>Available to spend</p>
-                        </div>
-                        <p> {{ card.available_to_spend.value }} {{ card.available_to_spend.currency }}</p>
-                    </div>
-                </div>
-
-            </div> 
-        </div> -->
-
     </div>
 </template>
 
@@ -108,7 +59,7 @@ export default {
     components: {
 
     },
-    props: ['cards', 'filteredItems'],
+    props: ['cards', 'filteredItems', 'paginatedItems'],
 
 
 }
@@ -123,19 +74,19 @@ export default {
     padding: 30px;
     background-color: rgb(238, 87, 87);
     margin: 20px;
-    border-radius: 8px ;
+    border-radius: 8px;
     box-shadow: 2px 2px 15px 1px rgb(75, 69, 69);
     /* width: 40%; */
-    
+
 
 }
 
 .all-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    
-    justify-content: space-evenly; 
-    
+
+    justify-content: space-evenly;
+
     /* background: rgb(151, 126, 126); */
 }
 
@@ -208,7 +159,6 @@ export default {
 .available-color {
     width: 12px;
     height: 12px;
-    /* background: #000; */
     border-radius: 50%;
     margin: 7px;
 }
