@@ -272,7 +272,7 @@ export default {
     margin: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 480px) and (max-width: 768px) {
 
 
     #card-types {
@@ -285,5 +285,30 @@ export default {
         align-items: center;
 
     }
+}
+
+@media screen and (max-width: 480px) {
+
+
+#card-types {
+    padding-left: 0px;
+}
+
+.video-and-heading {
+    display: flex;
+    align-items: flex-end;
+}
+
+.search-and-filter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-field input {
+    border: none;
+    border-bottom: 2px solid rgb(240, 195, 209);
+    margin-right: 10px;
+    width: 100px;
+}
 }
 </style>

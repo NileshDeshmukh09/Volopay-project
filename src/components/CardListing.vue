@@ -26,118 +26,16 @@
                 </ul>
             </div>
         </div>
-      
+
     </div>
 </template>
 
 <script>
-import userData from '../data/card.json';
-// import CardComponent from './CardComponent.vue'
 
 export default {
     name: "CardListing",
     components: {
-        // CardComponent,
-
     },
-
-    data() {
-        return {
-            card: userData,
-            showDialog: false,
-            searchObj: null,
-            searchText: '',
-            selectCardType: [],
-            currentPage: userData.page,
-            itemsPerPage: userData.per_page,
-            total: userData.total,
-            items: userData.data,
-            selectedName: ''
-        }
-    },
-
-    computed: {
-
-
-        uniqueNames() {
-            return Array.from(new Set(this.items.map(item => item.owner_id)))
-        },
-
-
-        // pagination
-
-        totalPages() {
-            return Math.ceil(this.items.length / this.itemsPerPage);
-        },
-
-        pages() {
-            const pages = [];
-            for (let i = 1; i <= this.totalPages; i++) {
-                pages.push(i);
-            }
-            return pages;
-        },
-
-        startIndex() {
-            return (this.currentPage - 1) * this.itemsPerPage;
-        },
-        endIndex() {
-            return Math.min(this.startIndex + this.itemsPerPage - 1, this.items.length - 1);
-        },
-
-        paginatedItems() {
-            return this.items.slice(this.startIndex, this.endIndex + 1);
-        },
-
-        filteredItems() {
-            if (this.searchText != '') {
-
-                // return this.card.data.filter(item => item.name.includes(this.searchText));
-                return this.items
-                    .slice(this.startIndex, this.endIndex + 1)
-                    .filter(item => item.name.includes(this.searchText));
-            }
-
-            if (this.selectedName != '') {
-                return this.items
-                    .slice(this.startIndex, this.endIndex + 1)
-                    .filter(item => item.owner_id === this.selectedName)
-            }
-
-            // Filter the objects array based on the selected object type 
-            let filteredObjects = this.items
-                .slice(this.startIndex, this.endIndex + 1)
-                .filter(card => {
-                    if (this.selectCardType.length > 0 && !this.selectCardType.includes(card.card_type)) {
-                        return false;
-                    }
-
-                    return true;
-                });
-            return filteredObjects;
-        },
-
-    },
-
-    methods: {
-        goToPage(page) {
-            this.currentPage = page;
-        },
-        prevPage() {
-            if (this.currentPage > 1) {
-                this.currentPage--;
-            }
-        },
-        nextPage() {
-            if (this.currentPage < this.totalPages) {
-                this.currentPage++;
-            }
-        },
-
-        onCancel() {
-            return this.selectCardType = [];
-        }
-    }
 }
 </script>
 
@@ -260,30 +158,9 @@ export default {
 .filter-dropdown {
     width: 350px;
     padding: 30px;
+    box-shadow: 2px 2px 2px 2px black;
 }
 
-
-/* Pagination */
-.active {
-    color: red;
-    font-weight: bold;
-}
-
-.pagination {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin: 20px;
-}
-
-.page-number {
-    display: flex;
-
-}
-
-.page-number li {
-    margin: 20px;
-}
 
 @media screen and (max-width: 768px) {
     .heading-and-addCard {
@@ -294,11 +171,22 @@ export default {
         padding-left: 0px;
     }
 
-    .search-and-filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    .video-and-heading {
+        width: 160px;
+        /* background: rgb(209, 76, 76); */
+        display: flex;
+        align-items: flex-end;
+    }
 
-}
+    .video-icon {
+        font-size: 10px;
+    }
+
+    .search-and-filter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
 }
 </style>

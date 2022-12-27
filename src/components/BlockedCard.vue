@@ -220,7 +220,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .search-field input {
@@ -298,9 +297,16 @@ export default {
 
     .search-and-filter {
         display: flex;
+        flex-direction: column-reverse;
         justify-content: space-between;
-        align-items: center;
-
+        align-items: flex-start;
     }
+
+    .search-field input {
+        width: 150px;
+    border: none;
+    border-bottom: 2px solid rgb(240, 195, 209);
+    margin-right: 10px;
 }
+    }
 </style>
