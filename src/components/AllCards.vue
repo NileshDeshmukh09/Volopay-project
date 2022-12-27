@@ -1,43 +1,88 @@
 <template>
-    <div id="mainDiv">
-        <div class="heading-and-addCard">
-            <div class="video-and-heading">
-                <h1>Virtual cards </h1>
-                <p class="video-icon"> <i class="fa-solid fa-video iconVideo"></i> learn more</p>
+    <div>
+        <div class="all-card">
+            <div class="search-and-filter">
+                <div class="search-field">
+                    <input v-model="searchText" type="text" placeholder="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <!--  Dialog Box -->
+                <div>
+                    <b-dropdown id="dropdown-right" class="filterDropdown m-2" right text="Filter" variant="secondary">
+                        <p> Filters </p>
+                        <hr>
+                        <!-- <pre> {{ filteredItems }}</pre> -->
+
+                        <form action="" @submit.prevent="filteredItems">
+                            <div class="filter-dropdown">
+
+
+                                <p for="card-type" class="d-block text-secondary">Type</p>
+                                <div class="cardtype-checkbox">
+                                    <div class="subscription">
+                                        <input type="checkbox" id="subscription" v-model="selectCardType"
+                                            value="subscription">
+                                        <label for="subscription">Subscription</label>
+                                    </div>
+                                    <div class="burner">
+                                        <input type="checkbox" id="burner" v-model="selectCardType" value="burner">
+                                        <label for="burner">Burner</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="select-dropdown">
+                                    <p for="card-type" class="d-block text-secondary">Card Holder</p>
+                                    <select v-model="selectedName" class="select-name">
+                                        <option value="">Select cardholder</option>
+                                        <option v-for="item in uniqueNames" :key="item" :value="item">
+                                            {{ item }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-secondary" @click="onCancel()">Cancel</button>
+                            </div>
+                        </form>
+
+
+
+                    </b-dropdown>
+                </div>
             </div>
-            <button class="add-card-button"> <i class="fa-solid fa-plus"></i> <span> Virtual card </span></button>
-        </div>
 
-        <div class="cardType-and-Menu">
-            <div class="card-types">
-                <ul id="card-types">
-                    <li><router-link to="/your-cards" class="btn">Your</router-link></li>
-                    <li><router-link to="/" class="btn">All</router-link></li>
-                    <li><router-link to="/blocked-cards" class="btn">Blocked</router-link></li>
+            <CardComponent :cards="card" :paginatedItems="paginatedItems" :filteredItems="filteredItems" />
 
-                    <router-view></router-view>
+            <!--  Pagination -->
+
+            <div class="pagination">
+
+                <button class="btn btn-danger" v-if="currentPage > 1" @click="prevPage">Prev</button>
+                <ul class="page-number">
+                    <li v-for="page in pages" :key="page" :class="{ active: page === currentPage }"
+                        @click="goToPage(page)">
+                        {{ page }}</li>
                 </ul>
+                <button v-if="currentPage < totalPages" class="btn btn-danger" @click="nextPage">Next</button>
+
             </div>
 
-            <div class="Menu-icon">
-                <ul id="menu-icon">
-                    <li> <i class="fa-brands btn fa-squarespace"></i></li>
-                    <li> <i class="fa-solid btn fa-bars"></i> </li>
-                </ul>
-            </div>
+            <!--  Pagination -->
+
         </div>
-      
     </div>
 </template>
 
 <script>
 import userData from '../data/card.json';
-// import CardComponent from './CardComponent.vue'
+import CardComponent from './CardComponent.vue'
 
 export default {
     name: "CardListing",
     components: {
-        // CardComponent,
+        CardComponent,
 
     },
 
@@ -142,74 +187,16 @@ export default {
 </script>
 
 <style scoped>
-#mainDiv {
-    margin: 30px;
+.all-card {
+    /* background: rgb(210, 117, 117); */
+    border-top: 1px solid rgb(193, 191, 191);
+    width: 100vw;
+    height: 100%;
+    margin: 85px -236px;
+    padding: 10px 40px;
 }
 
-/* heading and add card div styles */
-.heading-and-addCard {
-    margin: 30px;
-    display: flex;
-    justify-content: space-between;
-}
 
-.add-card-button {
-    height: 40px;
-    width: 150px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0px 1px 3px 1px rgb(219, 176, 176);
-}
-
-.video-and-heading {
-    display: flex;
-    align-items: flex-end;
-}
-
-.video-icon {
-    padding: 0px 10px 0px 10px;
-    color: rgb(20, 107, 237);
-    background: rgb(239, 229, 229);
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-/* Card Types and Menu div styles */
-.cardType-and-Menu {
-    display: flex;
-    justify-content: space-between;
-}
-
-#card-types {
-    display: flex;
-    justify-content: space-between;
-}
-
-#card-types li,
-#menu-icon li {
-    margin: 45px 0px -20px 0px;
-    list-style-type: none;
-}
-
-#card-types li a {
-    text-decoration: none;
-    color: rgb(72, 72, 72);
-    font-weight: 600;
-    border-radius: 0px;
-}
-
-#card-types li a:hover {
-    border-bottom: 5px solid rgb(236, 133, 173);
-
-}
-
-#menu-icon {
-    display: flex;
-    justify-content: space-between;
-}
 
 /* Search and Filter Div styles */
 .search-and-filter {
@@ -286,19 +273,17 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-    .heading-and-addCard {
-        margin: 10px;
-    }
+
 
     #card-types {
         padding-left: 0px;
     }
 
     .search-and-filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-}
+    }
 }
 </style>

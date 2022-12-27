@@ -5,54 +5,20 @@
         "budget_name": "Software subscription",
         "owner_id": 1,
         "spent": {
-          "value": 100,
+          "value": 0,
           "currency": "SGD"
         },
         "available_to_spend": {
-          "value": 1000,
+          "value": 9,
           "currency": "SGD"
         },
         "card_type": "burner",
         "expiry": "9 feb",
-        "limit": 100,
+        "limit": 9,
         "status": "active"
       },
       {
-        "name": "Card 2",
-        "budget_name": "Software subscription",
-        "owner_id": 1,
-        "spent": {
-          "value": 50,
-          "currency": "SGD"
-        },
-        "available_to_spend": {
-          "value": 1000,
-          "currency": "SGD"
-        },
-        "card_type": "subscription",
-        "expiry": "9 feb",
-        "limit": 1000,
-        "status": "active"
-      },
-      {
-        "name": "Card 3",
-        "budget_name": "Software subscription",
-        "owner_id": 2,
-        "spent": {
-          "value": 100,
-          "currency": "SGD"
-        },
-        "available_to_spend": {
-          "value": 1000,
-          "currency": "SGD"
-        },
-        "card_type": "burner",
-        "expiry": "9 feb",
-        "limit": 100,
-        "status": "active"
-      },
-      {
-        "name": "Card 4",
+        "name": "QuickBooks",
         "budget_name": "Software subscription",
         "owner_id": 2,
         "spent": {
@@ -60,45 +26,79 @@
           "currency": "SGD"
         },
         "available_to_spend": {
-          "value": 1000,
+          "value": 1,
           "currency": "SGD"
         },
         "card_type": "subscription",
         "expiry": "9 feb",
-        "limit": 1000,
+        "limit": 10,
         "status": "active"
       },
       {
-        "name": "Card 5",
+        "name": "Xero",
         "budget_name": "Software subscription",
-        "owner_id": 3,
+        "owner_id": 2,
         "spent": {
-          "value": 100,
+          "value": 0,
           "currency": "SGD"
         },
         "available_to_spend": {
-          "value": 1000,
+          "value": 15,
           "currency": "SGD"
         },
         "card_type": "burner",
         "expiry": "9 feb",
-        "limit": 100,
+        "limit": 50,
         "status": "active"
       },
       {
-        "name": "Card 6",
+        "name": "Motion",
         "budget_name": "Software subscription",
-        "owner_id": 3,
+        "owner_id": 4,
         "spent": {
-          "value": 50,
+          "value": 0,
           "currency": "SGD"
         },
         "available_to_spend": {
-          "value": 1000,
+          "value": 15,
           "currency": "SGD"
         },
         "card_type": "subscription",
         "expiry": "9 feb",
+        "limit": 15,
+        "status": "active"
+      },
+      {
+        "name": "Pandadoc",
+        "budget_name": "Software subscription",
+        "owner_id": 3,
+        "spent": {
+          "value": 0,
+          "currency": "SGD"
+        },
+        "available_to_spend": {
+          "value": 180,
+          "currency": "SGD"
+        },
+        "card_type": "subscription",
+        "expiry": "9 feb",
+        "limit": 180,
+        "status": "active"
+      },
+      {
+        "name": "Apple Dev Licence",
+        "budget_name": "Software subscription",
+        "owner_id": 4,
+        "spent": {
+          "value": 148,
+          "currency": "SGD"
+        },
+        "available_to_spend": {
+          "value": 30,
+          "currency": "SGD"
+        },
+        "card_type": "burner",
+        "expiry": "! May , 23",
         "limit": 100,
         "status": "active"
       },
@@ -116,7 +116,7 @@
         },
         "card_type": "subscription",
         "expiry": "9 feb",
-        "limit": 1000,
+        "limit": 925,
         "status": "active"
         },
         {
@@ -124,16 +124,16 @@
         "budget_name": "Software subscription",
         "owner_id": 2,
         "spent": {
-        "value": 25,
+        "value": 500,
         "currency": "SGD"
         },
         "available_to_spend": {
-        "value": 975,
+        "value": 925,
         "currency": "SGD"
         },
         "card_type": "burner",
         "expiry": "9 feb",
-        "limit": 100,
+        "limit": 925,
         "status": "active"
         },
         {
@@ -150,7 +150,7 @@
         },
         "card_type": "subscription",
         "expiry": "9 feb",
-        "limit": 1000,
+        "limit": 950,
         "status": "active"
         },
         {
@@ -167,13 +167,43 @@
         },
         "card_type": "subscription",
         "expiry": "9 feb",
-        "limit": 1000,
+        "limit": 925,
         "status": "active"
+        },
+        {
+        "name": "Card 11",
+        "budget_name": "Software subscription",
+        "owner_id": 3,
+        "spent": {
+        "value": 75,
+        "currency": "SGD"
+        },
+        "available_to_spend": {
+        "value": 500,
+        "currency": "SGD"
+        },
+        "card_type": "subscription",
+        "expiry": "9 feb",
+        "limit": 1000,
+        "status": "blocked"
+        },
+        {
+        "name": "Card 12",
+        "budget_name": "Software subscription",
+        "owner_id": 2,
+        "spent": {
+        "value": 75,
+        "currency": "SGD"
+        },
+        "available_to_spend": {
+        "value": 200,
+        "currency": "SGD"
+        },
+        "card_type": "subscription",
+        "expiry": "9 feb",
+        "limit": 100,
+        "status": "blocked"
         }
-        
-        
-        
-      
     ],
     "page": 1,
     "per_page": 4,
