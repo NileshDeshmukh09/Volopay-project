@@ -147,7 +147,7 @@ export default {
             if (this.searchText != '') {
 
                 // return this.card.data.filter(item => item.name.includes(this.searchText));
-                return this.items 
+                return this.items
                     .slice(this.startIndex, this.endIndex + 1)
                     .filter(item => item.name.includes(this.searchText));
             }
@@ -304,9 +304,9 @@ export default {
 
     .search-field input {
         width: 150px;
-    border: none;
-    border-bottom: 2px solid rgb(240, 195, 209);
-    margin-right: 10px;
-}
+        border: none;
+        border-bottom: 2px solid rgb(240, 195, 209);
+        margin-right: 10px;
+    }
 }
 </style>
