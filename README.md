@@ -1,24 +1,35 @@
-# volopay-project
+# Volopay Project
 
-## Project setup
-```
-npm install
-```
+## SETUP
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+To get started and run the app:
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Clone the project using command
 
-### Lints and fixes files
-```
-npm run lint
-```
+` git clone https://github.com/NileshDeshmukh09/GramoDay-Project.git `
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Run ` npm install ` to install the corresponding node packages
+
+- Run ` npm start ` to run the app on http://localhost:8000
+
+
+### Features :
+
+It contains One Main Component and 3 Child Components 
+
+Main Component 
+- ChildListing.vue
+
+Child Components : 
+
+#### AllCards.vue
+![AllCards](https://github.com/NileshDeshmukh09/Volopay-project/blob/master/screenshots/All-card.png?raw=true)
+
+#### YourCards.vue
+![YourCards](https://github.com/NileshDeshmukh09/Volopay-project/blob/master/screenshots/blocked-card.png?raw=true)
+
+#### BlockedCard.vue
+![YourCards](https://github.com/NileshDeshmukh09/Volopay-project/blob/master/screenshots/your-card-page.png?raw=true)
+
+
+## Thankyou !
