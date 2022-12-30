@@ -6,7 +6,7 @@ To get started and run the app:
 
 - Clone the project using command
 
-` git clone https://github.com/NileshDeshmukh09/GramoDay-Project.git `
+` git clone https://github.com/NileshDeshmukh09/Volopay-project.gitt `
 
 - Run ` npm install ` to install the corresponding node packages
 
