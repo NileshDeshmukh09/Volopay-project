@@ -31,5 +31,13 @@ Child Components :
 #### BlockedCard.vue
 ![YourCards](https://github.com/NileshDeshmukh09/Volopay-project/blob/master/screenshots/your-card-page.png?raw=true)
 
+### Filters 
+Added Filters on the` Owner Name ` and on the ` card Type `.
 
+### Search 
+`Search the records `based on the card Name
+
+### Pagination 
+
+` Pagination ` on the page based on the Number of Cards 
 ## Thankyou !
