@@ -21,7 +21,7 @@
 
             <div class="Menu-icon">
                 <ul id="menu-icon">
-                    <li> <i class="fa-brands btn fa-squarespace"></i></li>
+                    <li> <i class="fa-brands btn fa-squarespace"></i> </li>
                     <li> <i class="fa-solid btn fa-bars"></i> </li>
                 </ul>
             </div>

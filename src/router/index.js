@@ -5,7 +5,7 @@ import AllCards from '@/components/AllCards.vue';
 import YourCard from '@/components/YourCard.vue';
 
 const router = new Router({
-    mode: 'history',
+    mode:'history',
     routes: [
       {
         name: 'CardList',

@@ -2,7 +2,7 @@
 
 ## SETUP
 
-To get started and run the app:
+To get started  and run the app:
 
 - Clone the project using command
 

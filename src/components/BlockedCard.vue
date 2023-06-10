@@ -3,7 +3,7 @@
         <div class="blocked-card">
 
             <div class="search-and-filter">
-                <p> <i class="fa-solid fa-ban text-danger m-2"></i> Blocked Card</p>
+                <p> <i  class="fa-solid fa-ban text-danger m-2"></i> Blocked Card</p>
                 <div class="search-filter">
 
 

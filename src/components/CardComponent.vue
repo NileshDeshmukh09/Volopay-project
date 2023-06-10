@@ -9,7 +9,7 @@
             <div v-for="card in filteredItems" :key="card.name" class="card-list">
                 <div class="name-and-icon">
                     <div class="name-and-para">
-                        <h3>{{ card.name }}</h3>
+                        <h3>{{ card.name }} </h3>
                         <p>{{ card.name }} <i class="fa-solid fa-circle"></i> {{ card.budget_name }}</p>
                     </div>
                     <div class="icon" v-if="card.card_type == 'burner'">

@@ -4,7 +4,7 @@
   src="https://necolas.github.io/normalize.css/logo.svg" alt="Normalize Logo"
   width="80" height="80" align="right"></a>
 
-> A modern alternative to CSS resets
+> A modern alternative to  CSS resets
 
 [![npm][npm-image]][npm-url] [![license][license-image]][license-url]
 [![changelog][changelog-image]][changelog-url]

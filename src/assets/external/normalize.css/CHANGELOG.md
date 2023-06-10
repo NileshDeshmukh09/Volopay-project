@@ -11,7 +11,7 @@
 * Form inputs inherit `font-family`.
 * Fix text decoration in Safari 8+.
 
-### 7.0.0 (May 2, 2017)
+### 7.0.0 (May 2,2017)
 
 * Revert changes in `body` and form elements styles introduced by v6
 

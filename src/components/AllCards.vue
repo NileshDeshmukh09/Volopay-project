@@ -3,7 +3,7 @@
         <div class="all-card">
             <div class="search-and-filter">
                 <div class="search-field">
-                    <input v-model="searchText" type="text" placeholder="search">
+                    <input  v-model="searchText" type="text" placeholder="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
 
