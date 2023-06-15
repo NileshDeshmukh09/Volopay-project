@@ -191,7 +191,7 @@ export default {
         },
 
         onCancel() {
-            return this.selectCardType = [];
+            return this.selectCardType = [] , this.selectedName = '';
         }
     }
 }

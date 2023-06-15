@@ -181,7 +181,8 @@ export default {
         },
 
         onCancel() {
-            return this.selectCardType = [];
+            console.log("cancel : " , this.selectCardType.length );
+            return this.selectCardType = [] , this.selectedName = '';
         }
     }
 }
